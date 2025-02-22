@@ -1,42 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import Header from './Header';
 import AddContact from './AddContact';
 import ContactList from './ContactList';
 
 function App() {
-	const contacts = [
-		{
-			id: '1',
-			name: 'junaid ali khan',
-			phone: '1234567890',
-			email: 'junaidalikhan@gmail.com',
-		},
-		{
-			id: '1',
-			name: 'junaid ali khan',
-			phone: '1234567890',
-			email: 'junaidalikhan@gmail.com',
-		},
-		{
-			id: '1',
-			name: 'junaid ali khan',
-			phone: '1234567890',
-			email: 'junaidalikhan@gmail.com',
-		},
-		{
-			id: '1',
-			name: 'junaid ali khan',
-			phone: '1234567890',
-			email: 'junaidalikhan@gmail.com',
-		},
-	];
-	// const [contacts, setContacts] = useState([]);
+	const LOCAL_STORAGE_KEY = 'contacts';
+	const [contacts, setContacts] = useState(() => {
+		const savedContacts = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+		return savedContacts ? JSON.parse(savedContacts) : [];
+	});
+
+	const addContactHandler = (contact) => {
+		const newContact = {
+			...contact,
+			id: Date.now(),
+		};
+
+		setContacts([...contacts, newContact]);
+	};
+
+	useEffect(() => {
+		localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
+	}, [contacts]);
 
 	return (
 		<>
 			<div className='ui container'>
 				<Header />
-				<AddContact />
+				<AddContact addContactHandler={addContactHandler} />
 				<ContactList contacts={contacts} />
 			</div>
 		</>
