@@ -4,7 +4,33 @@ import AddContact from './AddContact';
 import ContactList from './ContactList';
 
 function App() {
-	const [contacts, setContacts] = useState([]);
+	const contacts = [
+		{
+			id: '1',
+			name: 'junaid ali khan',
+			phone: '1234567890',
+			email: 'junaidalikhan@gmail.com',
+		},
+		{
+			id: '1',
+			name: 'junaid ali khan',
+			phone: '1234567890',
+			email: 'junaidalikhan@gmail.com',
+		},
+		{
+			id: '1',
+			name: 'junaid ali khan',
+			phone: '1234567890',
+			email: 'junaidalikhan@gmail.com',
+		},
+		{
+			id: '1',
+			name: 'junaid ali khan',
+			phone: '1234567890',
+			email: 'junaidalikhan@gmail.com',
+		},
+	];
+	// const [contacts, setContacts] = useState([]);
 
 	return (
 		<>
