@@ -33,7 +33,10 @@ function App() {
 	}, [contacts]);
 
 	return (
-		<div className='ui container'>
+		<div
+			className='ui grid  '
+			style={{ margin: '50px', display: 'grid', alignItems: 'center' }}
+		>
 			<Router>
 				<Header />
 				<Routes>
